@@ -8,14 +8,17 @@ interface ITodoInputProps extends IUseTodoInputReturns {
 
 const TodoInput = ({ inputValue, handleInputValue, resetInputValue, addTodo }: ITodoInputProps) => {
   const createTodo = (value: string) => {
-    if (value.trim() === '') return;
+    if (value.trim() === '') {
+      alert('값을 입력해주세요!');
+      return;
+    }
     resetInputValue();
     addTodo(value);
   };
 
   return (
     <Styled.Wrapper>
-      <Styled.Title>todo</Styled.Title>
+      <Styled.Title>my todo</Styled.Title>
       <Styled.Input
         type="text"
         placeholder="할 일을 입력하세요."

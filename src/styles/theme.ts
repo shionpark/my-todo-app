@@ -26,7 +26,7 @@ const color = {
   subText: '#bababc',
   black: '#17202A',
   white: '#FDFEFE',
-  blue: '#3498DB',
+  blue: '#005CC8',
   transparentBrandColor: 'rgba(20, 26, 25, 0.1)',
   transparentBackground: 'rgba(0, 0, 0, 0.1)',
 };

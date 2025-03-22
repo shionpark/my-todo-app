@@ -9,26 +9,25 @@ export const Wrapper = styled.div`
 `;
 
 export const Item = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 80% 20%;
   width: 100%;
 
   ${borderStyle};
-  border: 1px solid ${({ theme }) => lighten(0.04, theme.color.subText)};
+  border: 1px solid ${({ theme }) => lighten(0.14, theme.color.subText)};
   padding: ${({ theme }) => theme.length.sm};
 
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => lighten(0.2, theme.color.subText)};
+    background: ${({ theme }) => lighten(0.22, theme.color.subText)};
     ${AnimationStyle};
   }
 `;
 
 export const ItemButton = styled.div`
   ${flexStyle};
-  justify-content: space-between;
-  width: 4.8rem;
+  justify-content: center;
 
   input[type='checkbox'] {
     zoom: 1.5;
