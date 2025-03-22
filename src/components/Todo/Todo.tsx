@@ -1,10 +1,12 @@
-import { useTodoInput } from '@/hooks';
+import { useTodoInput, useTodoList } from '@/hooks';
 
 const Todo = () => {
   const { inputValue, handleInputValue, resetInputValue } = useTodoInput();
 
-  const addTodo = () => {
-    /** todo 추가 로직 */
+  const { todoList, addTodo, toggleTodo } = useTodoList();
+
+  const createTodo = (value: string) => {
+    addTodo(value);
     resetInputValue();
   };
 
@@ -16,7 +18,16 @@ const Todo = () => {
         value={inputValue}
         onChange={handleInputValue}
       />
-      <button onClick={addTodo}>등록</button>
+      <button onClick={() => createTodo(inputValue)}>등록</button>
+
+      <div>
+        {todoList.map((todo) => (
+          <div key={todo.id} onClick={() => toggleTodo(todo.id)}>
+            {todo.content}
+            {todo.isCompleted ? '완료' : '미완료'}
+          </div>
+        ))}
+      </div>
     </>
   );
 };
