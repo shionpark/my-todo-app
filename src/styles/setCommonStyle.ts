@@ -14,3 +14,7 @@ export const flexColumnStyle = css`
   ${flexStyle};
   flex-direction: column;
 `;
+
+export const AnimationStyle = css`
+  transition: all 0.15s ease-out;
+`;

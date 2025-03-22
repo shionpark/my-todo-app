@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ITodo } from './useTodoList';
 
-type FilterType = '전체' | '완료' | '미완료';
+export type FilterType = '전체' | '완료' | '미완료';
 
 export const useFilterTodo = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('전체');
@@ -10,7 +10,7 @@ export const useFilterTodo = () => {
     setActiveFilter(option);
   };
 
-  const filterOptions: FilterType[] = ['전체', '완료', '미완료'];
+  const filterOptions: FilterType[] = ['전체', '미완료', '완료'];
 
   const getFilteredTodo = (todos: ITodo[], filter: FilterType) => {
     if (filter === '완료') {

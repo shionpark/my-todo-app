@@ -26,5 +26,9 @@ export const useTodoList = () => {
     );
   };
 
-  return { todoList, addTodo, toggleTodo };
+  const removeTodo = (id: number) => {
+    setTodoList(todoList.filter((todo) => todo.id !== id));
+  };
+
+  return { todoList, addTodo, toggleTodo, removeTodo };
 };
