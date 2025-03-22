@@ -1,12 +1,18 @@
+import { IUseTodoInputReturns } from '@/hooks';
+
 import * as Styled from './TodoInput.styles';
 
-interface ITodoInputProps {
-  inputValue: string;
-  handleInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  createTodo: (value: string) => void;
+interface ITodoInputProps extends IUseTodoInputReturns {
+  addTodo: (value: string) => void;
 }
 
-const TodoInput = ({ inputValue, handleInputValue, createTodo }: ITodoInputProps) => {
+const TodoInput = ({ inputValue, handleInputValue, resetInputValue, addTodo }: ITodoInputProps) => {
+  const createTodo = (value: string) => {
+    if (value.trim() === '') return;
+    resetInputValue();
+    addTodo(value);
+  };
+
   return (
     <Styled.Wrapper>
       <Styled.Title>todo</Styled.Title>

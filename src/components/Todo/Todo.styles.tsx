@@ -37,6 +37,12 @@ export const FilterButton = styled.button<{ isActive: boolean }>`
   color: ${({ isActive, theme }) => (isActive ? theme.color.white : theme.color.black)};
   background: ${({ isActive, theme }) =>
     isActive ? theme.color.blue : lighten(0.08, theme.color.subText)};
+
+  & > div {
+    ${flexStyle};
+    justify-content: center;
+    gap: 0.2rem;
+  }
 `;
 
 export const TodoListSection = styled.div`

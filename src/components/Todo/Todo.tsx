@@ -6,13 +6,8 @@ import { TodoInput } from '../TodoInput';
 import * as Styled from './Todo.styles';
 
 const Todo = () => {
-  const { resetInputValue, ...todoInputProps } = useTodoInput();
   const { todoList, addTodo, toggleTodo, removeTodo } = useTodoList();
-
-  const createTodo = (value: string) => {
-    addTodo(value);
-    resetInputValue();
-  };
+  const todoInputProps = useTodoInput();
 
   const { filterOptions, activeFilter, handleFilterOption, getFilteredTodo } = useFilterTodo();
   const filteredTodoList = getFilteredTodo(todoList, activeFilter);
@@ -20,7 +15,7 @@ const Todo = () => {
   return (
     <Styled.Wrapper>
       <Styled.TodoSection>
-        <TodoInput {...todoInputProps} createTodo={createTodo} />
+        <TodoInput {...todoInputProps} addTodo={addTodo} />
 
         <Styled.ButtonsWrapper>
           {filterOptions.map((option, index) => (
@@ -29,7 +24,10 @@ const Todo = () => {
               isActive={option === activeFilter}
               onClick={() => handleFilterOption(option)}
             >
-              {option}
+              <div>
+                <span>{option}</span>
+                <span>{getFilteredTodo(todoList, option).length}</span>
+              </div>
             </Styled.FilterButton>
           ))}
         </Styled.ButtonsWrapper>

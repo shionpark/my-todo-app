@@ -20,3 +20,5 @@ export const useTodoInput = () => {
     resetInputValue,
   };
 };
+
+export interface IUseTodoInputReturns extends ReturnType<typeof useTodoInput> {}
