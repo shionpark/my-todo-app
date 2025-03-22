@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { LOCAL_STORAGE_KEY } from '@/constants';
+import { getLocalStorage } from '@/utils';
 
 export interface ITodo {
   id: number;
@@ -7,7 +10,11 @@ export interface ITodo {
 }
 
 export const useTodoList = () => {
-  const [todoList, setTodoList] = useState<ITodo[]>([]);
+  const [todoList, setTodoList] = useState<ITodo[]>(getLocalStorage(LOCAL_STORAGE_KEY));
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todoList));
+  }, [todoList]);
 
   const addTodo = (content: string) => {
     setTodoList([
