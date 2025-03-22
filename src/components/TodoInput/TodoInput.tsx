@@ -1,3 +1,5 @@
+import * as Styled from './TodoInput.styles';
+
 interface ITodoInputProps {
   inputValue: string;
   handleInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -6,16 +8,16 @@ interface ITodoInputProps {
 
 const TodoInput = ({ inputValue, handleInputValue, createTodo }: ITodoInputProps) => {
   return (
-    <>
-      <span>todo</span>
-      <input
+    <Styled.Wrapper>
+      <Styled.Title>todo</Styled.Title>
+      <Styled.Input
         type="text"
         placeholder="할 일을 입력하세요."
         value={inputValue}
         onChange={handleInputValue}
       />
-      <button onClick={() => createTodo(inputValue)}>등록</button>
-    </>
+      <Styled.StyledButton onClick={() => createTodo(inputValue)}>등록</Styled.StyledButton>
+    </Styled.Wrapper>
   );
 };
 
